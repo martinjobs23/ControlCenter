@@ -1,0 +1,35 @@
+﻿syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.ceit.desktop.grpc";
+option java_outer_classname = "FiletransferProto";
+option objc_class_prefix = "HLW";
+package filetransfer;
+ 
+service FileTransfer{
+ 
+  rpc FileDetail_by_Type (FileDetailRequest_by_Type) returns (FileDetailRespone);
+  rpc FileDetail_by_Name (FileDetailRequest_by_Name) returns (FileDetailRespone);
+
+}
+ 
+message FileDetailRequest_by_Type{
+	int32 type = 1;
+}
+
+message FileDetailRequest_by_Name{
+	string name = 1;
+}
+
+message FileDetailRespone{
+	repeated  OneFileDetail detaillist = 1;
+	int32 count = 10;
+}
+message OneFileDetail{
+	 string filename = 1;
+	 string desc = 2;
+	 string size = 3;
+	 string url = 4;
+	 string hash = 5;
+	 string org = 6;
+}
+
