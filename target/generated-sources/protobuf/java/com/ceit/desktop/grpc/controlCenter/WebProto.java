@@ -34,6 +34,26 @@ public final class WebProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_web_DevUnRegisterReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_FileDetailRequestByType_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_FileDetailRequestByType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_FileDetailRequestByName_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_FileDetailRequestByName_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_FileDetailRespone_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_FileDetailRespone_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_OneFileDetail_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_OneFileDetail_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -50,13 +70,23 @@ public final class WebProto {
       "\014\n\004code\030\002 \001(\005\022\014\n\004data\030\003 \001(\t\"<\n\024DevUnRegi" +
       "sterRequest\022\020\n\010username\030\001 \001(\t\022\022\n\ndevica_" +
       "mac\030\002 \001(\t\"=\n\022DevUnRegisterReply\022\013\n\003msg\030\001" +
-      " \001(\t\022\014\n\004code\030\002 \001(\005\022\014\n\004data\030\003 \001(\t2\222\001\n\003Web" +
-      "\022D\n\020DevRegisterCheck\022\027.web.DevRegisterRe" +
-      "quest\032\025.web.DevRegisterReply\"\000\022E\n\rDevUnR" +
-      "egister\022\031.web.DevUnRegisterRequest\032\027.web" +
-      ".DevUnRegisterReply\"\000B7\n#com.ceit.deskto" +
-      "p.grpc.controlCenterB\010WebProtoP\001\242\002\003HLWb\006" +
-      "proto3"
+      " \001(\t\022\014\n\004code\030\002 \001(\005\022\014\n\004data\030\003 \001(\t\"\'\n\027File" +
+      "DetailRequestByType\022\014\n\004type\030\001 \001(\005\"\'\n\027Fil" +
+      "eDetailRequestByName\022\014\n\004name\030\001 \001(\t\"J\n\021Fi" +
+      "leDetailRespone\022&\n\ndetaillist\030\001 \003(\0132\022.we" +
+      "b.OneFileDetail\022\r\n\005count\030\002 \001(\005\"e\n\rOneFil" +
+      "eDetail\022\020\n\010filename\030\001 \001(\t\022\014\n\004desc\030\002 \001(\t\022" +
+      "\014\n\004size\030\003 \001(\t\022\013\n\003url\030\004 \001(\t\022\014\n\004hash\030\005 \001(\t" +
+      "\022\013\n\003org\030\006 \001(\t2\252\002\n\003Web\022D\n\020DevRegisterChec" +
+      "k\022\027.web.DevRegisterRequest\032\025.web.DevRegi" +
+      "sterReply\"\000\022E\n\rDevUnRegister\022\031.web.DevUn" +
+      "RegisterRequest\032\027.web.DevUnRegisterReply" +
+      "\"\000\022J\n\020fileDetailByType\022\034.web.FileDetailR" +
+      "equestByType\032\026.web.FileDetailRespone\"\000\022J" +
+      "\n\020fileDetailByName\022\034.web.FileDetailReque" +
+      "stByName\032\026.web.FileDetailRespone\"\000B7\n#co" +
+      "m.ceit.desktop.grpc.controlCenterB\010WebPr" +
+      "otoP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -86,6 +116,30 @@ public final class WebProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_web_DevUnRegisterReply_descriptor,
         new java.lang.String[] { "Msg", "Code", "Data", });
+    internal_static_web_FileDetailRequestByType_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_web_FileDetailRequestByType_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_FileDetailRequestByType_descriptor,
+        new java.lang.String[] { "Type", });
+    internal_static_web_FileDetailRequestByName_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_web_FileDetailRequestByName_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_FileDetailRequestByName_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_web_FileDetailRespone_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_web_FileDetailRespone_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_FileDetailRespone_descriptor,
+        new java.lang.String[] { "Detaillist", "Count", });
+    internal_static_web_OneFileDetail_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_web_OneFileDetail_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_OneFileDetail_descriptor,
+        new java.lang.String[] { "Filename", "Desc", "Size", "Url", "Hash", "Org", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

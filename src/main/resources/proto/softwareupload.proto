@@ -1,0 +1,37 @@
+﻿syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.ceit.desktop.grpc";
+option java_outer_classname = "SoftwareUploadProto";
+option objc_class_prefix = "HLW";
+package softwareupload;
+//Java后端上传内容到软件超市
+service SoftwareUpload{
+
+  rpc Upload (UploadRequest) returns (UploadRespond);
+  //rpc FileDetail_by_Name (FileDetailRequest_by_Name) returns (FileDetailRespone);
+}
+
+message UploadRequest{
+  repeated UploadList uploadlist = 1;
+}
+//message FileDetailRequest_by_Name{
+//	string name = 1;
+//}
+message UploadRespond{
+	//repeated  OneFileDetail detaillist = 1;
+	int32 status = 1;
+	string msg = 2;
+	string result = 3;
+}
+message UploadList{
+	 string filename = 1;
+	 string desc = 2;
+	 string size = 3;
+	 string url = 4;
+	 string hash = 5;
+	 string type = 6;
+	 int32 public = 7;
+	 string org = 8;
+	 string version = 9;
+}
+

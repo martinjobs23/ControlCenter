@@ -89,6 +89,68 @@ public final class WebGrpc {
     return getDevUnRegisterMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType,
+      com.ceit.desktop.grpc.controlCenter.FileDetailRespone> getFileDetailByTypeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "fileDetailByType",
+      requestType = com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.FileDetailRespone.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType,
+      com.ceit.desktop.grpc.controlCenter.FileDetailRespone> getFileDetailByTypeMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType, com.ceit.desktop.grpc.controlCenter.FileDetailRespone> getFileDetailByTypeMethod;
+    if ((getFileDetailByTypeMethod = WebGrpc.getFileDetailByTypeMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getFileDetailByTypeMethod = WebGrpc.getFileDetailByTypeMethod) == null) {
+          WebGrpc.getFileDetailByTypeMethod = getFileDetailByTypeMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType, com.ceit.desktop.grpc.controlCenter.FileDetailRespone>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "fileDetailByType"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.FileDetailRespone.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("fileDetailByType"))
+              .build();
+        }
+      }
+    }
+    return getFileDetailByTypeMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName,
+      com.ceit.desktop.grpc.controlCenter.FileDetailRespone> getFileDetailByNameMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "fileDetailByName",
+      requestType = com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.FileDetailRespone.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName,
+      com.ceit.desktop.grpc.controlCenter.FileDetailRespone> getFileDetailByNameMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName, com.ceit.desktop.grpc.controlCenter.FileDetailRespone> getFileDetailByNameMethod;
+    if ((getFileDetailByNameMethod = WebGrpc.getFileDetailByNameMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getFileDetailByNameMethod = WebGrpc.getFileDetailByNameMethod) == null) {
+          WebGrpc.getFileDetailByNameMethod = getFileDetailByNameMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName, com.ceit.desktop.grpc.controlCenter.FileDetailRespone>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "fileDetailByName"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.FileDetailRespone.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("fileDetailByName"))
+              .build();
+        }
+      }
+    }
+    return getFileDetailByNameMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -151,6 +213,20 @@ public final class WebGrpc {
       asyncUnimplementedUnaryCall(getDevUnRegisterMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void fileDetailByType(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone> responseObserver) {
+      asyncUnimplementedUnaryCall(getFileDetailByTypeMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void fileDetailByName(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone> responseObserver) {
+      asyncUnimplementedUnaryCall(getFileDetailByNameMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -167,6 +243,20 @@ public final class WebGrpc {
                 com.ceit.desktop.grpc.controlCenter.DevUnRegisterRequest,
                 com.ceit.desktop.grpc.controlCenter.DevUnRegisterReply>(
                   this, METHODID_DEV_UN_REGISTER)))
+          .addMethod(
+            getFileDetailByTypeMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType,
+                com.ceit.desktop.grpc.controlCenter.FileDetailRespone>(
+                  this, METHODID_FILE_DETAIL_BY_TYPE)))
+          .addMethod(
+            getFileDetailByNameMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName,
+                com.ceit.desktop.grpc.controlCenter.FileDetailRespone>(
+                  this, METHODID_FILE_DETAIL_BY_NAME)))
           .build();
     }
   }
@@ -200,6 +290,22 @@ public final class WebGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDevUnRegisterMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void fileDetailByType(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getFileDetailByTypeMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void fileDetailByName(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getFileDetailByNameMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -228,6 +334,20 @@ public final class WebGrpc {
     public com.ceit.desktop.grpc.controlCenter.DevUnRegisterReply devUnRegister(com.ceit.desktop.grpc.controlCenter.DevUnRegisterRequest request) {
       return blockingUnaryCall(
           getChannel(), getDevUnRegisterMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.FileDetailRespone fileDetailByType(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType request) {
+      return blockingUnaryCall(
+          getChannel(), getFileDetailByTypeMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.FileDetailRespone fileDetailByName(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName request) {
+      return blockingUnaryCall(
+          getChannel(), getFileDetailByNameMethod(), getCallOptions(), request);
     }
   }
 
@@ -260,10 +380,28 @@ public final class WebGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDevUnRegisterMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.FileDetailRespone> fileDetailByType(
+        com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType request) {
+      return futureUnaryCall(
+          getChannel().newCall(getFileDetailByTypeMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.FileDetailRespone> fileDetailByName(
+        com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName request) {
+      return futureUnaryCall(
+          getChannel().newCall(getFileDetailByNameMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_DEV_REGISTER_CHECK = 0;
   private static final int METHODID_DEV_UN_REGISTER = 1;
+  private static final int METHODID_FILE_DETAIL_BY_TYPE = 2;
+  private static final int METHODID_FILE_DETAIL_BY_NAME = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -289,6 +427,14 @@ public final class WebGrpc {
         case METHODID_DEV_UN_REGISTER:
           serviceImpl.devUnRegister((com.ceit.desktop.grpc.controlCenter.DevUnRegisterRequest) request,
               (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.DevUnRegisterReply>) responseObserver);
+          break;
+        case METHODID_FILE_DETAIL_BY_TYPE:
+          serviceImpl.fileDetailByType((com.ceit.desktop.grpc.controlCenter.FileDetailRequestByType) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone>) responseObserver);
+          break;
+        case METHODID_FILE_DETAIL_BY_NAME:
+          serviceImpl.fileDetailByName((com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -353,6 +499,8 @@ public final class WebGrpc {
               .setSchemaDescriptor(new WebFileDescriptorSupplier())
               .addMethod(getDevRegisterCheckMethod())
               .addMethod(getDevUnRegisterMethod())
+              .addMethod(getFileDetailByTypeMethod())
+              .addMethod(getFileDetailByNameMethod())
               .build();
         }
       }

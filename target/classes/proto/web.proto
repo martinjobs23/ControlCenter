@@ -10,7 +10,8 @@ package web;
 service Web {
   rpc DevRegisterCheck (DevRegisterRequest) returns (DevRegisterReply) {}
   rpc DevUnRegister (DevUnRegisterRequest) returns (DevUnRegisterReply) {}
-
+  rpc fileDetailByType (FileDetailRequestByType) returns (FileDetailRespone) {}
+  rpc fileDetailByName (FileDetailRequestByName) returns (FileDetailRespone) {}
 }
 
 message DevRegisterRequest {
@@ -36,4 +37,25 @@ message DevUnRegisterReply {
   string msg = 1;
   int32 code = 2;
   string data = 3;
+}
+
+message FileDetailRequestByType{
+  int32 type = 1;
+}
+
+message FileDetailRequestByName{
+  string name = 1;
+}
+
+message FileDetailRespone{
+  repeated  OneFileDetail detaillist = 1;
+  int32 count = 2;
+}
+message OneFileDetail{
+  string filename = 1;
+  string desc = 2;
+  string size = 3;
+  string url = 4;
+  string hash = 5;
+  string org = 6;
 }

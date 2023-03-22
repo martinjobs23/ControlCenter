@@ -3,14 +3,15 @@ package com.ceit.desktop.grpc.server;
 
 import com.ceit.desktop.grpc.*;
 import com.ceit.desktop.grpc.controlCenter.*;
-import com.ceit.desktop.grpc.OneFileDetail;
 import com.ceit.desktop.service.CertCheckService;
 import com.ceit.desktop.softmarket.SoftMarketSearch;
+import com.ceit.desktop.softmarket.SoftMarketUpload;
 import com.ceit.desktop.utils.Result;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +22,7 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
 
     private static CertCheckService certCheckService = new CertCheckService();
     private static SoftMarketSearch softMarketSearch = new SoftMarketSearch();
+    private static SoftMarketUpload softMarketUpload = new SoftMarketUpload();
 
     public WebGrpcserver() {
     }
@@ -46,19 +48,34 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
         streamObserver.onCompleted();
     }
 
-    public void FileDetail_by_Type(FileDetailRequest_by_Type fileDetailRequest_by_type, StreamObserver<FileDetailRespone> streamObserver){
-        int soft_type = fileDetailRequest_by_type.getType();
+    public void fileDetailByType(FileDetailRequestByType fileDetailRequestbytype, StreamObserver<FileDetailRespone> streamObserver){
+        int soft_type = fileDetailRequestbytype.getType();
         List<OneFileDetail> list = softMarketSearch.softSearchByType(soft_type);
-        list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").build());
+        //list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").setOrg("").build());
         streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()).build());
         streamObserver.onCompleted();
     }
 
-    public void FileDetail_by_Name(FileDetailRequest_by_Name fileDetailRequest_by_name, StreamObserver<FileDetailRespone> streamObserver){
-        String sw_name = fileDetailRequest_by_name.getName();
+    public void fileDetailByName(FileDetailRequestByName fileDetailRequestByname, StreamObserver<FileDetailRespone> streamObserver){
+        String sw_name = fileDetailRequestByname.getName();
         List<OneFileDetail> list = softMarketSearch.softSearchByName(sw_name);
-        list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").build());
-        streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()).build());
+        list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").setOrg("").build());
+        streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()-1).build());
         streamObserver.onCompleted();
+    }
+
+    public void uploadRequest(UploadRequest uploadRequest, StreamObserver<UploadRespond> streamObserver){
+        List<UploadList> list= uploadRequest.getUploadlistList();
+        Result result = softMarketUpload.SoftwareUpload(list);
+        /**
+         * 这个地方需要给Java后端返回是否上传成功
+         * 需要把返回值给到streamObserver里面
+         */
+        streamObserver.onNext(UploadRespond.newBuilder().setMsg(result.getMsg()).setStatus(result.getCode()).setResult((String) result.getData()).build());
+        streamObserver.onCompleted();
+//        List<OneFileDetail> list = softMarketSearch.softSearchByName(sw_name);
+//        list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").build());
+//        streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()).build());
+//        streamObserver.onCompleted();
     }
 }
