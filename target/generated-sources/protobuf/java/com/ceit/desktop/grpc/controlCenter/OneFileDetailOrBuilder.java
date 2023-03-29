@@ -20,6 +20,18 @@ public interface OneFileDetailOrBuilder extends
       getFilenameBytes();
 
   /**
+   * <code>string image = 7;</code>
+   * @return The image.
+   */
+  java.lang.String getImage();
+  /**
+   * <code>string image = 7;</code>
+   * @return The bytes for image.
+   */
+  com.google.protobuf.ByteString
+      getImageBytes();
+
+  /**
    * <code>string desc = 2;</code>
    * @return The desc.
    */

@@ -151,6 +151,37 @@ public final class WebGrpc {
     return getFileDetailByNameMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.UploadRequest,
+      com.ceit.desktop.grpc.controlCenter.UploadRespond> getSoftwareRegisterMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "softwareRegister",
+      requestType = com.ceit.desktop.grpc.controlCenter.UploadRequest.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.UploadRespond.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.UploadRequest,
+      com.ceit.desktop.grpc.controlCenter.UploadRespond> getSoftwareRegisterMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.UploadRequest, com.ceit.desktop.grpc.controlCenter.UploadRespond> getSoftwareRegisterMethod;
+    if ((getSoftwareRegisterMethod = WebGrpc.getSoftwareRegisterMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getSoftwareRegisterMethod = WebGrpc.getSoftwareRegisterMethod) == null) {
+          WebGrpc.getSoftwareRegisterMethod = getSoftwareRegisterMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.UploadRequest, com.ceit.desktop.grpc.controlCenter.UploadRespond>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "softwareRegister"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.UploadRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.UploadRespond.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("softwareRegister"))
+              .build();
+        }
+      }
+    }
+    return getSoftwareRegisterMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -227,6 +258,13 @@ public final class WebGrpc {
       asyncUnimplementedUnaryCall(getFileDetailByNameMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void softwareRegister(com.ceit.desktop.grpc.controlCenter.UploadRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UploadRespond> responseObserver) {
+      asyncUnimplementedUnaryCall(getSoftwareRegisterMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -257,6 +295,13 @@ public final class WebGrpc {
                 com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName,
                 com.ceit.desktop.grpc.controlCenter.FileDetailRespone>(
                   this, METHODID_FILE_DETAIL_BY_NAME)))
+          .addMethod(
+            getSoftwareRegisterMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.UploadRequest,
+                com.ceit.desktop.grpc.controlCenter.UploadRespond>(
+                  this, METHODID_SOFTWARE_REGISTER)))
           .build();
     }
   }
@@ -306,6 +351,14 @@ public final class WebGrpc {
       asyncUnaryCall(
           getChannel().newCall(getFileDetailByNameMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void softwareRegister(com.ceit.desktop.grpc.controlCenter.UploadRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UploadRespond> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSoftwareRegisterMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -348,6 +401,13 @@ public final class WebGrpc {
     public com.ceit.desktop.grpc.controlCenter.FileDetailRespone fileDetailByName(com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName request) {
       return blockingUnaryCall(
           getChannel(), getFileDetailByNameMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.UploadRespond softwareRegister(com.ceit.desktop.grpc.controlCenter.UploadRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getSoftwareRegisterMethod(), getCallOptions(), request);
     }
   }
 
@@ -396,12 +456,21 @@ public final class WebGrpc {
       return futureUnaryCall(
           getChannel().newCall(getFileDetailByNameMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.UploadRespond> softwareRegister(
+        com.ceit.desktop.grpc.controlCenter.UploadRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSoftwareRegisterMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_DEV_REGISTER_CHECK = 0;
   private static final int METHODID_DEV_UN_REGISTER = 1;
   private static final int METHODID_FILE_DETAIL_BY_TYPE = 2;
   private static final int METHODID_FILE_DETAIL_BY_NAME = 3;
+  private static final int METHODID_SOFTWARE_REGISTER = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -435,6 +504,10 @@ public final class WebGrpc {
         case METHODID_FILE_DETAIL_BY_NAME:
           serviceImpl.fileDetailByName((com.ceit.desktop.grpc.controlCenter.FileDetailRequestByName) request,
               (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.FileDetailRespone>) responseObserver);
+          break;
+        case METHODID_SOFTWARE_REGISTER:
+          serviceImpl.softwareRegister((com.ceit.desktop.grpc.controlCenter.UploadRequest) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UploadRespond>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -501,6 +574,7 @@ public final class WebGrpc {
               .addMethod(getDevUnRegisterMethod())
               .addMethod(getFileDetailByTypeMethod())
               .addMethod(getFileDetailByNameMethod())
+              .addMethod(getSoftwareRegisterMethod())
               .build();
         }
       }

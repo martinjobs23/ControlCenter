@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private OneFileDetail() {
     filename_ = "";
+    image_ = "";
     desc_ = "";
     size_ = "";
     url_ = "";
@@ -90,6 +91,12 @@ private static final long serialVersionUID = 0L;
             org_ = s;
             break;
           }
+          case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            image_ = s;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -154,6 +161,44 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       filename_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int IMAGE_FIELD_NUMBER = 7;
+  private volatile java.lang.Object image_;
+  /**
+   * <code>string image = 7;</code>
+   * @return The image.
+   */
+  @java.lang.Override
+  public java.lang.String getImage() {
+    java.lang.Object ref = image_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      image_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string image = 7;</code>
+   * @return The bytes for image.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImageBytes() {
+    java.lang.Object ref = image_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      image_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -382,6 +427,9 @@ private static final long serialVersionUID = 0L;
     if (!getOrgBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, org_);
     }
+    if (!getImageBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, image_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -409,6 +457,9 @@ private static final long serialVersionUID = 0L;
     if (!getOrgBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, org_);
     }
+    if (!getImageBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, image_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -426,6 +477,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getFilename()
         .equals(other.getFilename())) return false;
+    if (!getImage()
+        .equals(other.getImage())) return false;
     if (!getDesc()
         .equals(other.getDesc())) return false;
     if (!getSize()
@@ -449,6 +502,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + FILENAME_FIELD_NUMBER;
     hash = (53 * hash) + getFilename().hashCode();
+    hash = (37 * hash) + IMAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getImage().hashCode();
     hash = (37 * hash) + DESC_FIELD_NUMBER;
     hash = (53 * hash) + getDesc().hashCode();
     hash = (37 * hash) + SIZE_FIELD_NUMBER;
@@ -594,6 +649,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       filename_ = "";
 
+      image_ = "";
+
       desc_ = "";
 
       size_ = "";
@@ -631,6 +688,7 @@ private static final long serialVersionUID = 0L;
     public com.ceit.desktop.grpc.controlCenter.OneFileDetail buildPartial() {
       com.ceit.desktop.grpc.controlCenter.OneFileDetail result = new com.ceit.desktop.grpc.controlCenter.OneFileDetail(this);
       result.filename_ = filename_;
+      result.image_ = image_;
       result.desc_ = desc_;
       result.size_ = size_;
       result.url_ = url_;
@@ -686,6 +744,10 @@ private static final long serialVersionUID = 0L;
       if (other == com.ceit.desktop.grpc.controlCenter.OneFileDetail.getDefaultInstance()) return this;
       if (!other.getFilename().isEmpty()) {
         filename_ = other.filename_;
+        onChanged();
+      }
+      if (!other.getImage().isEmpty()) {
+        image_ = other.image_;
         onChanged();
       }
       if (!other.getDesc().isEmpty()) {
@@ -809,6 +871,82 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       filename_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object image_ = "";
+    /**
+     * <code>string image = 7;</code>
+     * @return The image.
+     */
+    public java.lang.String getImage() {
+      java.lang.Object ref = image_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        image_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string image = 7;</code>
+     * @return The bytes for image.
+     */
+    public com.google.protobuf.ByteString
+        getImageBytes() {
+      java.lang.Object ref = image_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        image_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string image = 7;</code>
+     * @param value The image to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImage(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      image_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearImage() {
+      
+      image_ = getDefaultInstance().getImage();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image = 7;</code>
+     * @param value The bytes for image to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      image_ = value;
       onChanged();
       return this;
     }

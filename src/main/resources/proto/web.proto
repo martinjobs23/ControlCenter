@@ -12,6 +12,7 @@ service Web {
   rpc DevUnRegister (DevUnRegisterRequest) returns (DevUnRegisterReply) {}
   rpc fileDetailByType (FileDetailRequestByType) returns (FileDetailRespone) {}
   rpc fileDetailByName (FileDetailRequestByName) returns (FileDetailRespone) {}
+  rpc softwareRegister (UploadRequest) returns (UploadRespond) {}
 }
 
 message DevRegisterRequest {
@@ -53,9 +54,21 @@ message FileDetailRespone{
 }
 message OneFileDetail{
   string filename = 1;
+  string image = 7;
   string desc = 2;
   string size = 3;
   string url = 4;
   string hash = 5;
   string org = 6;
+}
+
+message UploadRequest{
+  string hash = 1;
+}
+
+message UploadRespond{
+  //repeated  OneFileDetail detaillist = 1;
+  int32 code = 1;
+  string msg = 2;
+  string data = 3;
 }

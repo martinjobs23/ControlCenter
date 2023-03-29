@@ -54,6 +54,16 @@ public final class WebProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_web_OneFileDetail_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_UploadRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_UploadRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_UploadRespond_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_UploadRespond_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -74,19 +84,23 @@ public final class WebProto {
       "DetailRequestByType\022\014\n\004type\030\001 \001(\005\"\'\n\027Fil" +
       "eDetailRequestByName\022\014\n\004name\030\001 \001(\t\"J\n\021Fi" +
       "leDetailRespone\022&\n\ndetaillist\030\001 \003(\0132\022.we" +
-      "b.OneFileDetail\022\r\n\005count\030\002 \001(\005\"e\n\rOneFil" +
-      "eDetail\022\020\n\010filename\030\001 \001(\t\022\014\n\004desc\030\002 \001(\t\022" +
-      "\014\n\004size\030\003 \001(\t\022\013\n\003url\030\004 \001(\t\022\014\n\004hash\030\005 \001(\t" +
-      "\022\013\n\003org\030\006 \001(\t2\252\002\n\003Web\022D\n\020DevRegisterChec" +
-      "k\022\027.web.DevRegisterRequest\032\025.web.DevRegi" +
-      "sterReply\"\000\022E\n\rDevUnRegister\022\031.web.DevUn" +
-      "RegisterRequest\032\027.web.DevUnRegisterReply" +
-      "\"\000\022J\n\020fileDetailByType\022\034.web.FileDetailR" +
-      "equestByType\032\026.web.FileDetailRespone\"\000\022J" +
-      "\n\020fileDetailByName\022\034.web.FileDetailReque" +
-      "stByName\032\026.web.FileDetailRespone\"\000B7\n#co" +
-      "m.ceit.desktop.grpc.controlCenterB\010WebPr" +
-      "otoP\001\242\002\003HLWb\006proto3"
+      "b.OneFileDetail\022\r\n\005count\030\002 \001(\005\"t\n\rOneFil" +
+      "eDetail\022\020\n\010filename\030\001 \001(\t\022\r\n\005image\030\007 \001(\t" +
+      "\022\014\n\004desc\030\002 \001(\t\022\014\n\004size\030\003 \001(\t\022\013\n\003url\030\004 \001(" +
+      "\t\022\014\n\004hash\030\005 \001(\t\022\013\n\003org\030\006 \001(\t\"\035\n\rUploadRe" +
+      "quest\022\014\n\004hash\030\001 \001(\t\"8\n\rUploadRespond\022\014\n\004" +
+      "code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\022\014\n\004data\030\003 \001(\t2\346\002" +
+      "\n\003Web\022D\n\020DevRegisterCheck\022\027.web.DevRegis" +
+      "terRequest\032\025.web.DevRegisterReply\"\000\022E\n\rD" +
+      "evUnRegister\022\031.web.DevUnRegisterRequest\032" +
+      "\027.web.DevUnRegisterReply\"\000\022J\n\020fileDetail" +
+      "ByType\022\034.web.FileDetailRequestByType\032\026.w" +
+      "eb.FileDetailRespone\"\000\022J\n\020fileDetailByNa" +
+      "me\022\034.web.FileDetailRequestByName\032\026.web.F" +
+      "ileDetailRespone\"\000\022:\n\020softwareRegister\022\022" +
+      ".web.UploadRequest\032\022.web.UploadRespondB7" +
+      "\n#com.ceit.desktop.grpc.controlCenterB\010W" +
+      "ebProtoP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -139,7 +153,19 @@ public final class WebProto {
     internal_static_web_OneFileDetail_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_web_OneFileDetail_descriptor,
-        new java.lang.String[] { "Filename", "Desc", "Size", "Url", "Hash", "Org", });
+        new java.lang.String[] { "Filename", "Image", "Desc", "Size", "Url", "Hash", "Org", });
+    internal_static_web_UploadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_web_UploadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_UploadRequest_descriptor,
+        new java.lang.String[] { "Hash", });
+    internal_static_web_UploadRespond_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_web_UploadRespond_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_UploadRespond_descriptor,
+        new java.lang.String[] { "Code", "Msg", "Data", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

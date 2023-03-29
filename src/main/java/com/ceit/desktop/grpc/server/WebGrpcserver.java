@@ -65,13 +65,14 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
     }
 
     public void uploadRequest(UploadRequest uploadRequest, StreamObserver<UploadRespond> streamObserver){
-        List<UploadList> list= uploadRequest.getUploadlistList();
-        Result result = softMarketUpload.SoftwareUpload(list);
+        //List<UploadList> list= uploadRequest.getUploadlistList();
+        String sha256Hash = uploadRequest.getHash();
+        Result result = softMarketUpload.SoftwareUpload(sha256Hash);
         /**
          * 这个地方需要给Java后端返回是否上传成功
          * 需要把返回值给到streamObserver里面
          */
-        streamObserver.onNext(UploadRespond.newBuilder().setMsg(result.getMsg()).setStatus(result.getCode()).setResult((String) result.getData()).build());
+        streamObserver.onNext(UploadRespond.newBuilder().setCode(result.getCode()).setMsg(result.getMsg()).setData((String) result.getData()).build());
         streamObserver.onCompleted();
 //        List<OneFileDetail> list = softMarketSearch.softSearchByName(sw_name);
 //        list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").build());
