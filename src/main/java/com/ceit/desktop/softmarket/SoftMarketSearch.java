@@ -36,6 +36,7 @@ public class SoftMarketSearch {
             org = (String) map.get("sw_organization");
             sw_public = String.valueOf(map.get("sw_public"));
             image = (String) map.get("sw_image");
+//            image = "sw_image";
 //            if (sw_public == "0" || sw_public.equals("0")){
 //                list2.add(OneFileDetail.newBuilder().
 //                        setFilename(filename).

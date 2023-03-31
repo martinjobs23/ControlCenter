@@ -64,10 +64,10 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
         streamObserver.onCompleted();
     }
 
-    public void uploadRequest(UploadRequest uploadRequest, StreamObserver<UploadRespond> streamObserver){
+    public void softwareRegister(UploadRequest uploadRequest, StreamObserver<UploadRespond> streamObserver){
         //List<UploadList> list= uploadRequest.getUploadlistList();
         String sha256Hash = uploadRequest.getHash();
-        Result result = softMarketUpload.SoftwareUpload(sha256Hash);
+        Result result = softMarketUpload.softwareRegister(sha256Hash);
         /**
          * 这个地方需要给Java后端返回是否上传成功
          * 需要把返回值给到streamObserver里面

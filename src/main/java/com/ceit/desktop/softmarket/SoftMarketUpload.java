@@ -11,11 +11,10 @@ import org.slf4j.LoggerFactory;
 public class SoftMarketUpload {
     private static Logger logger = LoggerFactory.getLogger(SoftMarketUpload.class);
     private JdbcUtil jdbcUtil = new JdbcUtil();
-    /**
-     * 这个地方需要开始和CA中心进行沟通，申请证书
-     */
-    public Result SoftwareUpload(String sha256Hash){    //按类型查找
-        if (sha256Hash == null || sha256Hash.equals(null) || sha256Hash == "" || sha256Hash.equals("")){
+    // 这个地方需要开始和CA中心进行沟通，申请证书
+    public Result softwareRegister(String sha256Hash){    //按类型查找
+        System.out.println(sha256Hash);
+        if (sha256Hash.equals(null) ||sha256Hash.equals("")){
             return new Result("error",000,"Hash值为空，上传失败。");
         }
         CaGrpcClient caGrpcClient = new CaGrpcClient();
@@ -24,7 +23,7 @@ public class SoftMarketUpload {
         System.out.println("data: "+softRegisteReply.getResult());
         System.out.println("msg: "+softRegisteReply.getMsg());
         return new Result(softRegisteReply.getMsg(),softRegisteReply.getStatus(),softRegisteReply.getResult());
-        //        //如果申请证书成功，可以直接将uploadList中的内容添加到soft_cert表，如下
+//      如果申请证书成功，可以直接将uploadList中的内容添加到soft_cert表，如下
 //        if(softRegisteReply.getStatus() == 200){
 //            filename = uploadList.getFilename();
 //            desc = uploadList.getDesc();
