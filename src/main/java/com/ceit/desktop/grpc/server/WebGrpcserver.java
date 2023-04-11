@@ -1,9 +1,8 @@
 package com.ceit.desktop.grpc.server;
 
-
-import com.ceit.desktop.grpc.*;
 import com.ceit.desktop.grpc.controlCenter.*;
 import com.ceit.desktop.service.CertCheckService;
+import com.ceit.desktop.service.SayHelloService;
 import com.ceit.desktop.softmarket.SoftMarketSearch;
 import com.ceit.desktop.softmarket.SoftMarketUpload;
 import com.ceit.desktop.utils.Result;
@@ -23,15 +22,24 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
     private static CertCheckService certCheckService = new CertCheckService();
     private static SoftMarketSearch softMarketSearch = new SoftMarketSearch();
     private static SoftMarketUpload softMarketUpload = new SoftMarketUpload();
+    private static SayHelloService sayHelloService = new SayHelloService();
 
     public WebGrpcserver() {
     }
+
     public void StartGrpc(int port) throws IOException {
         logger.info("Control_Center start Web gRPC listening on " + port);
         ServerBuilder.forPort(port)
                 .addService(new WebGrpcserver())
                 .build()
                 .start();
+    }
+    public void fileDetailByType(FileDetailRequestByType fileDetailRequestbytype, StreamObserver<FileDetailRespone> streamObserver){
+        int soft_type = fileDetailRequestbytype.getType();
+        List<OneFileDetail> list = softMarketSearch.softSearchByType(soft_type);
+        //list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").setOrg("").build());
+        streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()).build());
+        streamObserver.onCompleted();
     }
 
     public void devRegisterCheck(DevRegisterRequest request, StreamObserver<DevRegisterReply> streamObserver){
@@ -48,13 +56,7 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
         streamObserver.onCompleted();
     }
 
-    public void fileDetailByType(FileDetailRequestByType fileDetailRequestbytype, StreamObserver<FileDetailRespone> streamObserver){
-        int soft_type = fileDetailRequestbytype.getType();
-        List<OneFileDetail> list = softMarketSearch.softSearchByType(soft_type);
-        //list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").setOrg("").build());
-        streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()).build());
-        streamObserver.onCompleted();
-    }
+
 
     public void fileDetailByName(FileDetailRequestByName fileDetailRequestByname, StreamObserver<FileDetailRespone> streamObserver){
         String sw_name = fileDetailRequestByname.getName();
@@ -64,19 +66,26 @@ public class WebGrpcserver extends WebGrpc.WebImplBase {
         streamObserver.onCompleted();
     }
 
+    /**
+     * 这个地方需要给Java后端返回是否上传成功
+     * 需要把返回值给到streamObserver里面
+     */
     public void softwareRegister(UploadRequest uploadRequest, StreamObserver<UploadRespond> streamObserver){
         //List<UploadList> list= uploadRequest.getUploadlistList();
         String sha256Hash = uploadRequest.getHash();
         Result result = softMarketUpload.softwareRegister(sha256Hash);
-        /**
-         * 这个地方需要给Java后端返回是否上传成功
-         * 需要把返回值给到streamObserver里面
-         */
         streamObserver.onNext(UploadRespond.newBuilder().setCode(result.getCode()).setMsg(result.getMsg()).setData((String) result.getData()).build());
         streamObserver.onCompleted();
 //        List<OneFileDetail> list = softMarketSearch.softSearchByName(sw_name);
 //        list.add(OneFileDetail.newBuilder().setDesc("").setFilename("").setSize("").setUrl("").setHash("").build());
 //        streamObserver.onNext(FileDetailRespone.newBuilder().addAllDetaillist(list).setCount(list.size()).build());
 //        streamObserver.onCompleted();
+    }
+
+    public void sayHello(HelloRequest helloRequest,StreamObserver<HelloReply> streamObserver){
+        String name = helloRequest.getName();
+        String reply = sayHelloService.Greet(name);
+        streamObserver.onNext(HelloReply.newBuilder().setMessage(reply).build());
+        streamObserver.onCompleted();
     }
 }

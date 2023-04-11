@@ -13,6 +13,15 @@ service Web {
   rpc fileDetailByType (FileDetailRequestByType) returns (FileDetailRespone) {}
   rpc fileDetailByName (FileDetailRequestByName) returns (FileDetailRespone) {}
   rpc softwareRegister (UploadRequest) returns (UploadRespond) {}
+  rpc sayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
 }
 
 message DevRegisterRequest {
@@ -72,3 +81,5 @@ message UploadRespond{
   string msg = 2;
   string data = 3;
 }
+
+
