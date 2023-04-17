@@ -12,13 +12,13 @@ public class SoftMarketUpload {
     private static Logger logger = LoggerFactory.getLogger(SoftMarketUpload.class);
     private JdbcUtil jdbcUtil = new JdbcUtil();
     // 这个地方需要开始和CA中心进行沟通，申请证书
-    public Result softwareRegister(String sha256Hash){    //按类型查找
-        System.out.println(sha256Hash);
-        if (sha256Hash.equals(null) ||sha256Hash.equals("")){
+    public Result softwareRegister(String md5Hash){    //按类型查找
+        System.out.println(md5Hash);
+        if (md5Hash == ""||md5Hash == null ){
             return new Result("error",000,"Hash值为空，上传失败。");
         }
         CaGrpcClient caGrpcClient = new CaGrpcClient();
-        SoftRegisteReply softRegisteReply = caGrpcClient.stub.softRegister(SoftRegisterRequest.newBuilder().setSoftHash(sha256Hash).build());
+        SoftRegisteReply softRegisteReply = caGrpcClient.stub.softRegister(SoftRegisterRequest.newBuilder().setSoftHash(md5Hash).build());
         System.out.println("code: "+softRegisteReply.getStatus());
         System.out.println("data: "+softRegisteReply.getResult());
         System.out.println("msg: "+softRegisteReply.getMsg());

@@ -182,37 +182,6 @@ public final class WebGrpc {
     return getSoftwareRegisterMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.HelloRequest,
-      com.ceit.desktop.grpc.controlCenter.HelloReply> getSayHelloMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "sayHello",
-      requestType = com.ceit.desktop.grpc.controlCenter.HelloRequest.class,
-      responseType = com.ceit.desktop.grpc.controlCenter.HelloReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.HelloRequest,
-      com.ceit.desktop.grpc.controlCenter.HelloReply> getSayHelloMethod() {
-    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.HelloRequest, com.ceit.desktop.grpc.controlCenter.HelloReply> getSayHelloMethod;
-    if ((getSayHelloMethod = WebGrpc.getSayHelloMethod) == null) {
-      synchronized (WebGrpc.class) {
-        if ((getSayHelloMethod = WebGrpc.getSayHelloMethod) == null) {
-          WebGrpc.getSayHelloMethod = getSayHelloMethod =
-              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.HelloRequest, com.ceit.desktop.grpc.controlCenter.HelloReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "sayHello"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.ceit.desktop.grpc.controlCenter.HelloRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.ceit.desktop.grpc.controlCenter.HelloReply.getDefaultInstance()))
-              .setSchemaDescriptor(new WebMethodDescriptorSupplier("sayHello"))
-              .build();
-        }
-      }
-    }
-    return getSayHelloMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -296,13 +265,6 @@ public final class WebGrpc {
       asyncUnimplementedUnaryCall(getSoftwareRegisterMethod(), responseObserver);
     }
 
-    /**
-     */
-    public void sayHello(com.ceit.desktop.grpc.controlCenter.HelloRequest request,
-        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.HelloReply> responseObserver) {
-      asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -340,13 +302,6 @@ public final class WebGrpc {
                 com.ceit.desktop.grpc.controlCenter.UploadRequest,
                 com.ceit.desktop.grpc.controlCenter.UploadRespond>(
                   this, METHODID_SOFTWARE_REGISTER)))
-          .addMethod(
-            getSayHelloMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                com.ceit.desktop.grpc.controlCenter.HelloRequest,
-                com.ceit.desktop.grpc.controlCenter.HelloReply>(
-                  this, METHODID_SAY_HELLO)))
           .build();
     }
   }
@@ -404,14 +359,6 @@ public final class WebGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSoftwareRegisterMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     */
-    public void sayHello(com.ceit.desktop.grpc.controlCenter.HelloRequest request,
-        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.HelloReply> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
@@ -461,13 +408,6 @@ public final class WebGrpc {
     public com.ceit.desktop.grpc.controlCenter.UploadRespond softwareRegister(com.ceit.desktop.grpc.controlCenter.UploadRequest request) {
       return blockingUnaryCall(
           getChannel(), getSoftwareRegisterMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public com.ceit.desktop.grpc.controlCenter.HelloReply sayHello(com.ceit.desktop.grpc.controlCenter.HelloRequest request) {
-      return blockingUnaryCall(
-          getChannel(), getSayHelloMethod(), getCallOptions(), request);
     }
   }
 
@@ -524,14 +464,6 @@ public final class WebGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSoftwareRegisterMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.HelloReply> sayHello(
-        com.ceit.desktop.grpc.controlCenter.HelloRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getSayHelloMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_DEV_REGISTER_CHECK = 0;
@@ -539,7 +471,6 @@ public final class WebGrpc {
   private static final int METHODID_FILE_DETAIL_BY_TYPE = 2;
   private static final int METHODID_FILE_DETAIL_BY_NAME = 3;
   private static final int METHODID_SOFTWARE_REGISTER = 4;
-  private static final int METHODID_SAY_HELLO = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -577,10 +508,6 @@ public final class WebGrpc {
         case METHODID_SOFTWARE_REGISTER:
           serviceImpl.softwareRegister((com.ceit.desktop.grpc.controlCenter.UploadRequest) request,
               (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UploadRespond>) responseObserver);
-          break;
-        case METHODID_SAY_HELLO:
-          serviceImpl.sayHello((com.ceit.desktop.grpc.controlCenter.HelloRequest) request,
-              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.HelloReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -648,7 +575,6 @@ public final class WebGrpc {
               .addMethod(getFileDetailByTypeMethod())
               .addMethod(getFileDetailByNameMethod())
               .addMethod(getSoftwareRegisterMethod())
-              .addMethod(getSayHelloMethod())
               .build();
         }
       }

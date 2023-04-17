@@ -34,17 +34,15 @@ public class SoftMarketSearch {
             org = (String) map.get("sw_organization");
             sw_public = String.valueOf(map.get("sw_public"));
             image = (String) map.get("sw_image");
-                list2.add(OneFileDetail.newBuilder().setFilename(filename).setDesc(desc).setSize(size)
-                        .setUrl(url).setHash(hash).setOrg(org).setImage(image).build());
+            list2.add(OneFileDetail.newBuilder().setFilename(filename).setDesc(desc).setSize(size)
+                    .setUrl(url).setHash(hash).setOrg(org).setImage(image).build());
         }
         return list2;
     }
     public List softSearchByName(String sw_name){   //按软件名查找
         String checkSql = "select * from soft_cert where sw_name like '%?%'";
         List<Map<String,Object>> list1 = jdbcUtil.executeQuery(checkSql,sw_name);
-        if(list1.isEmpty()){
-            return null;
-        }
+        if(list1.isEmpty()) return null;
         List<OneFileDetail> list2 = new ArrayList<>();
         String filename, desc, size, url, hash, org, image, sw_public;
         for (Map map:list1) {
@@ -56,27 +54,8 @@ public class SoftMarketSearch {
             org = (String) map.get("sw_organization");
             sw_public = String.valueOf(map.get("sw_public"));
             image = (String) map.get("sw_image");
-//            if (sw_public == "0" || sw_public.equals("0")){
-//                list2.add(OneFileDetail.newBuilder().
-//                        setFilename(filename).
-//                        setDesc(desc).
-//                        setSize(size).
-//                        setUrl("").
-//                        setHash(hash).
-//                        setOrg(org).
-//                        setImage(image).
-//                        build());
-//            } else  {
-            list2.add(OneFileDetail.newBuilder().
-                    setFilename(filename).
-                    setDesc(desc).
-                    setSize(size).
-                    setUrl(url).
-                    setHash(hash).
-                    setOrg(org).
-                    setImage(image).
-                    build());
-        //}
+            list2.add(OneFileDetail.newBuilder().setFilename(filename).setDesc(desc).setSize(size)
+                    .setUrl(url).setHash(hash).setOrg(org).setImage(image).build());
         }
         return list2;
     }
