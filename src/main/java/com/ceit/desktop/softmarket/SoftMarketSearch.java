@@ -40,8 +40,8 @@ public class SoftMarketSearch {
         return list2;
     }
     public List softSearchByName(String sw_name){   //按软件名查找
-        String checkSql = "select * from soft_cert where sw_name like '%?%'";
-        List<Map<String,Object>> list1 = jdbcUtil.executeQuery(checkSql,sw_name);
+        String checkSql = "select * from soft_cert where sw_name like '%"+sw_name+"%'";
+        List<Map<String,Object>> list1 = jdbcUtil.executeQuery(checkSql);
         if(list1.isEmpty()) return null;
         List<OneFileDetail> list2 = new ArrayList<>();
         String filename, desc, size, url, hash, org, image, sw_public;

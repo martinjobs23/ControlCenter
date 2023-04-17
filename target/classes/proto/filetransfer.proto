@@ -30,5 +30,6 @@ message OneFileDetail{
 	 string size = 3;
 	 string url = 4;
 	 string hash = 5;
+	 string org = 6;
 }
 
