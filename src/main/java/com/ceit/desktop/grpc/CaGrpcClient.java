@@ -11,6 +11,7 @@ public class CaGrpcClient {
     public CaCenterGrpc.CaCenterBlockingStub stub;
     private static FileConfigUtil fileConfigUtil = new FileConfigUtil();
 
+    private ManagedChannel selfChannel = null;
     public CaGrpcClient() {
         String ip = "";
         int port = 0;
@@ -21,10 +22,14 @@ public class CaGrpcClient {
             e.printStackTrace();
         }
 
-        ManagedChannel channel = ManagedChannelBuilder
+        selfChannel = ManagedChannelBuilder
                 .forAddress(ip,port)
                 .usePlaintext()
                 .build();
-        stub = CaCenterGrpc.newBlockingStub(channel);
+        stub = CaCenterGrpc.newBlockingStub(selfChannel);
+    }
+
+    public void shutdown() throws InterruptedException{
+        selfChannel.shutdown();
     }
 }

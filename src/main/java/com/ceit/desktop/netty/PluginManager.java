@@ -4,9 +4,11 @@ import com.ceit.desktop.entity.AgentSession;
 import com.ceit.desktop.grpc.*;
 import com.ceit.desktop.plugin.DevicePlugin;
 import com.ceit.desktop.plugin.FlowPlugin;
+import com.ceit.desktop.plugin.NetManagePlugin;
 import com.ceit.desktop.plugin.SoftwarePlugin;
 import com.ceit.desktop.service.CertCheckService;
 import com.ceit.desktop.service.FlowCheckService;
+import com.ceit.desktop.service.NetManageService;
 import com.ceit.desktop.service.SoftCheckService;
 import com.ceit.desktop.utils.JdbcUtil;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -22,11 +24,13 @@ public class PluginManager {
     public static DevicePlugin devicePlugin = null;
     public static SoftwarePlugin softwarePlugin = null;
     public static FlowPlugin flowPlugin = null;
+    public static NetManagePlugin netManagePlugin = null;
 
     //插件类型定义
     private static final int DEV_CHECK = 4;
     private static final int SOFTWARE_CHECK = 5;
     private static final int FLOW_CHECK = 6;
+    private static final int NET_MANAGE = 7;
     private static Logger logger = LoggerFactory.getLogger(PluginManager.class);
     private JdbcUtil jdbcUtil = new JdbcUtil();
 
@@ -62,6 +66,11 @@ public class PluginManager {
 //            flowPlugin.setPluginManager(this);
         }
 
+        //终端网络阻断插件
+        if(netManagePlugin == null){
+            netManagePlugin = new NetManagePlugin();
+        }
+
     }
 
     public void NotifyAgentAuthState(AgentSession agent, Boolean authorized){
@@ -81,6 +90,11 @@ public class PluginManager {
             {
                 flowPlugin.OnLogin(agent);
             }
+
+            if(netManagePlugin != null)
+            {
+                netManagePlugin.OnLogin(agent);
+            }
         }
         else
         {
@@ -97,6 +111,11 @@ public class PluginManager {
             if (flowPlugin != null)
             {
                 flowPlugin.OnLogout(agent);
+            }
+
+            if(netManagePlugin != null)
+            {
+                netManagePlugin.OnLogout(agent);
             }
         }
     }
@@ -147,6 +166,17 @@ public class PluginManager {
                 break;
             case FLOW_CHECK:
                 result = flowPlugin.flowCheck(agent,msg_type,stream,clientIP);
+                break;
+            case NET_MANAGE:
+                //下面的好像不需要了又
+                //检查对应dev_ip 是否在线，如果在线说明下发下线指令失败，如果下线则更新在线设备表
+                /*
+                检查代码以及报错日志
+                */
+                result = netManagePlugin.TerminalNetReplyHandle(agent,msg_type,stream,clientIP);
+                //if(result == 1){        //顺利处理
+
+                //}
                 break;
             default:
                 logger.debug("plugin_type 异常");

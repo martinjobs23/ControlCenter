@@ -182,6 +182,161 @@ public final class WebGrpc {
     return getSoftwareRegisterMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.CheckVersionRequest,
+      com.ceit.desktop.grpc.controlCenter.CheckVersionResponse> getCheckVersionMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "checkVersion",
+      requestType = com.ceit.desktop.grpc.controlCenter.CheckVersionRequest.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.CheckVersionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.CheckVersionRequest,
+      com.ceit.desktop.grpc.controlCenter.CheckVersionResponse> getCheckVersionMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.CheckVersionRequest, com.ceit.desktop.grpc.controlCenter.CheckVersionResponse> getCheckVersionMethod;
+    if ((getCheckVersionMethod = WebGrpc.getCheckVersionMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getCheckVersionMethod = WebGrpc.getCheckVersionMethod) == null) {
+          WebGrpc.getCheckVersionMethod = getCheckVersionMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.CheckVersionRequest, com.ceit.desktop.grpc.controlCenter.CheckVersionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "checkVersion"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.CheckVersionRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.CheckVersionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("checkVersion"))
+              .build();
+        }
+      }
+    }
+    return getCheckVersionMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest,
+      com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse> getUpdatePasswordMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "updatePassword",
+      requestType = com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest,
+      com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse> getUpdatePasswordMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest, com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse> getUpdatePasswordMethod;
+    if ((getUpdatePasswordMethod = WebGrpc.getUpdatePasswordMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getUpdatePasswordMethod = WebGrpc.getUpdatePasswordMethod) == null) {
+          WebGrpc.getUpdatePasswordMethod = getUpdatePasswordMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest, com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "updatePassword"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("updatePassword"))
+              .build();
+        }
+      }
+    }
+    return getUpdatePasswordMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest,
+      com.ceit.desktop.grpc.controlCenter.WorkOrderReply> getSubmitWorkOrderMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "submitWorkOrder",
+      requestType = com.ceit.desktop.grpc.controlCenter.WorkOrderRequest.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.WorkOrderReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest,
+      com.ceit.desktop.grpc.controlCenter.WorkOrderReply> getSubmitWorkOrderMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest, com.ceit.desktop.grpc.controlCenter.WorkOrderReply> getSubmitWorkOrderMethod;
+    if ((getSubmitWorkOrderMethod = WebGrpc.getSubmitWorkOrderMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getSubmitWorkOrderMethod = WebGrpc.getSubmitWorkOrderMethod) == null) {
+          WebGrpc.getSubmitWorkOrderMethod = getSubmitWorkOrderMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest, com.ceit.desktop.grpc.controlCenter.WorkOrderReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "submitWorkOrder"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.WorkOrderRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.WorkOrderReply.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("submitWorkOrder"))
+              .build();
+        }
+      }
+    }
+    return getSubmitWorkOrderMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest,
+      com.ceit.desktop.grpc.controlCenter.WorkOrderReply> getProcessWorkOrderMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "processWorkOrder",
+      requestType = com.ceit.desktop.grpc.controlCenter.WorkOrderRequest.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.WorkOrderReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest,
+      com.ceit.desktop.grpc.controlCenter.WorkOrderReply> getProcessWorkOrderMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest, com.ceit.desktop.grpc.controlCenter.WorkOrderReply> getProcessWorkOrderMethod;
+    if ((getProcessWorkOrderMethod = WebGrpc.getProcessWorkOrderMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getProcessWorkOrderMethod = WebGrpc.getProcessWorkOrderMethod) == null) {
+          WebGrpc.getProcessWorkOrderMethod = getProcessWorkOrderMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.WorkOrderRequest, com.ceit.desktop.grpc.controlCenter.WorkOrderReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "processWorkOrder"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.WorkOrderRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.WorkOrderReply.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("processWorkOrder"))
+              .build();
+        }
+      }
+    }
+    return getProcessWorkOrderMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail,
+      com.ceit.desktop.grpc.controlCenter.pushSoftwareReply> getPushSoftwareMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "pushSoftware",
+      requestType = com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail.class,
+      responseType = com.ceit.desktop.grpc.controlCenter.pushSoftwareReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail,
+      com.ceit.desktop.grpc.controlCenter.pushSoftwareReply> getPushSoftwareMethod() {
+    io.grpc.MethodDescriptor<com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail, com.ceit.desktop.grpc.controlCenter.pushSoftwareReply> getPushSoftwareMethod;
+    if ((getPushSoftwareMethod = WebGrpc.getPushSoftwareMethod) == null) {
+      synchronized (WebGrpc.class) {
+        if ((getPushSoftwareMethod = WebGrpc.getPushSoftwareMethod) == null) {
+          WebGrpc.getPushSoftwareMethod = getPushSoftwareMethod =
+              io.grpc.MethodDescriptor.<com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail, com.ceit.desktop.grpc.controlCenter.pushSoftwareReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "pushSoftware"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ceit.desktop.grpc.controlCenter.pushSoftwareReply.getDefaultInstance()))
+              .setSchemaDescriptor(new WebMethodDescriptorSupplier("pushSoftware"))
+              .build();
+        }
+      }
+    }
+    return getPushSoftwareMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -265,6 +420,41 @@ public final class WebGrpc {
       asyncUnimplementedUnaryCall(getSoftwareRegisterMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void checkVersion(com.ceit.desktop.grpc.controlCenter.CheckVersionRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.CheckVersionResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getCheckVersionMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void updatePassword(com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdatePasswordMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void submitWorkOrder(com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.WorkOrderReply> responseObserver) {
+      asyncUnimplementedUnaryCall(getSubmitWorkOrderMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void processWorkOrder(com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.WorkOrderReply> responseObserver) {
+      asyncUnimplementedUnaryCall(getProcessWorkOrderMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void pushSoftware(com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.pushSoftwareReply> responseObserver) {
+      asyncUnimplementedUnaryCall(getPushSoftwareMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -302,6 +492,41 @@ public final class WebGrpc {
                 com.ceit.desktop.grpc.controlCenter.UploadRequest,
                 com.ceit.desktop.grpc.controlCenter.UploadRespond>(
                   this, METHODID_SOFTWARE_REGISTER)))
+          .addMethod(
+            getCheckVersionMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.CheckVersionRequest,
+                com.ceit.desktop.grpc.controlCenter.CheckVersionResponse>(
+                  this, METHODID_CHECK_VERSION)))
+          .addMethod(
+            getUpdatePasswordMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest,
+                com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse>(
+                  this, METHODID_UPDATE_PASSWORD)))
+          .addMethod(
+            getSubmitWorkOrderMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.WorkOrderRequest,
+                com.ceit.desktop.grpc.controlCenter.WorkOrderReply>(
+                  this, METHODID_SUBMIT_WORK_ORDER)))
+          .addMethod(
+            getProcessWorkOrderMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.WorkOrderRequest,
+                com.ceit.desktop.grpc.controlCenter.WorkOrderReply>(
+                  this, METHODID_PROCESS_WORK_ORDER)))
+          .addMethod(
+            getPushSoftwareMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail,
+                com.ceit.desktop.grpc.controlCenter.pushSoftwareReply>(
+                  this, METHODID_PUSH_SOFTWARE)))
           .build();
     }
   }
@@ -359,6 +584,46 @@ public final class WebGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSoftwareRegisterMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void checkVersion(com.ceit.desktop.grpc.controlCenter.CheckVersionRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.CheckVersionResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getCheckVersionMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updatePassword(com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUpdatePasswordMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void submitWorkOrder(com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.WorkOrderReply> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSubmitWorkOrderMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void processWorkOrder(com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.WorkOrderReply> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getProcessWorkOrderMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void pushSoftware(com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail request,
+        io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.pushSoftwareReply> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPushSoftwareMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -408,6 +673,41 @@ public final class WebGrpc {
     public com.ceit.desktop.grpc.controlCenter.UploadRespond softwareRegister(com.ceit.desktop.grpc.controlCenter.UploadRequest request) {
       return blockingUnaryCall(
           getChannel(), getSoftwareRegisterMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.CheckVersionResponse checkVersion(com.ceit.desktop.grpc.controlCenter.CheckVersionRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getCheckVersionMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse updatePassword(com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getUpdatePasswordMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.WorkOrderReply submitWorkOrder(com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getSubmitWorkOrderMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.WorkOrderReply processWorkOrder(com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getProcessWorkOrderMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.ceit.desktop.grpc.controlCenter.pushSoftwareReply pushSoftware(com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail request) {
+      return blockingUnaryCall(
+          getChannel(), getPushSoftwareMethod(), getCallOptions(), request);
     }
   }
 
@@ -464,6 +764,46 @@ public final class WebGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSoftwareRegisterMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.CheckVersionResponse> checkVersion(
+        com.ceit.desktop.grpc.controlCenter.CheckVersionRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getCheckVersionMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse> updatePassword(
+        com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUpdatePasswordMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.WorkOrderReply> submitWorkOrder(
+        com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSubmitWorkOrderMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.WorkOrderReply> processWorkOrder(
+        com.ceit.desktop.grpc.controlCenter.WorkOrderRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getProcessWorkOrderMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.ceit.desktop.grpc.controlCenter.pushSoftwareReply> pushSoftware(
+        com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPushSoftwareMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_DEV_REGISTER_CHECK = 0;
@@ -471,6 +811,11 @@ public final class WebGrpc {
   private static final int METHODID_FILE_DETAIL_BY_TYPE = 2;
   private static final int METHODID_FILE_DETAIL_BY_NAME = 3;
   private static final int METHODID_SOFTWARE_REGISTER = 4;
+  private static final int METHODID_CHECK_VERSION = 5;
+  private static final int METHODID_UPDATE_PASSWORD = 6;
+  private static final int METHODID_SUBMIT_WORK_ORDER = 7;
+  private static final int METHODID_PROCESS_WORK_ORDER = 8;
+  private static final int METHODID_PUSH_SOFTWARE = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -508,6 +853,26 @@ public final class WebGrpc {
         case METHODID_SOFTWARE_REGISTER:
           serviceImpl.softwareRegister((com.ceit.desktop.grpc.controlCenter.UploadRequest) request,
               (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UploadRespond>) responseObserver);
+          break;
+        case METHODID_CHECK_VERSION:
+          serviceImpl.checkVersion((com.ceit.desktop.grpc.controlCenter.CheckVersionRequest) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.CheckVersionResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_PASSWORD:
+          serviceImpl.updatePassword((com.ceit.desktop.grpc.controlCenter.UpdatePasswordRequest) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.UpdatePasswordResponse>) responseObserver);
+          break;
+        case METHODID_SUBMIT_WORK_ORDER:
+          serviceImpl.submitWorkOrder((com.ceit.desktop.grpc.controlCenter.WorkOrderRequest) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.WorkOrderReply>) responseObserver);
+          break;
+        case METHODID_PROCESS_WORK_ORDER:
+          serviceImpl.processWorkOrder((com.ceit.desktop.grpc.controlCenter.WorkOrderRequest) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.WorkOrderReply>) responseObserver);
+          break;
+        case METHODID_PUSH_SOFTWARE:
+          serviceImpl.pushSoftware((com.ceit.desktop.grpc.controlCenter.pushSoftwareDetail) request,
+              (io.grpc.stub.StreamObserver<com.ceit.desktop.grpc.controlCenter.pushSoftwareReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -575,6 +940,11 @@ public final class WebGrpc {
               .addMethod(getFileDetailByTypeMethod())
               .addMethod(getFileDetailByNameMethod())
               .addMethod(getSoftwareRegisterMethod())
+              .addMethod(getCheckVersionMethod())
+              .addMethod(getUpdatePasswordMethod())
+              .addMethod(getSubmitWorkOrderMethod())
+              .addMethod(getProcessWorkOrderMethod())
+              .addMethod(getPushSoftwareMethod())
               .build();
         }
       }

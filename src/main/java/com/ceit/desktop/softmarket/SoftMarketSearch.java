@@ -22,8 +22,11 @@ public class SoftMarketSearch {
             checkSql = "select * from soft_cert where sw_type=?";
             list1 = jdbcUtil.executeQuery(checkSql,String.valueOf(soft_type));
         }
-        if(list1.isEmpty()) return null;
         List<OneFileDetail> list2 = new ArrayList<>();
+        if(list1.isEmpty()){
+            list2.add(OneFileDetail.newBuilder().setFilename("").setDesc("").setSize("").setUrl("").setHash("").setOrg("").setImage("").build());
+            return list2;
+        }
         String filename, desc, size, url, hash, org, sw_public, image;
         for (Map map:list1){
             filename = (String) map.get("sw_name");
@@ -42,8 +45,11 @@ public class SoftMarketSearch {
     public List softSearchByName(String sw_name){   //按软件名查找
         String checkSql = "select * from soft_cert where sw_name like '%"+sw_name+"%'";
         List<Map<String,Object>> list1 = jdbcUtil.executeQuery(checkSql);
-        if(list1.isEmpty()) return null;
         List<OneFileDetail> list2 = new ArrayList<>();
+        if(list1.isEmpty()){
+            list2.add(OneFileDetail.newBuilder().setFilename("").setDesc("").setSize("").setUrl("").setHash("").setOrg("").setImage("").build());
+            return list2;
+        }
         String filename, desc, size, url, hash, org, image, sw_public;
         for (Map map:list1) {
             filename = (String) map.get("sw_name");

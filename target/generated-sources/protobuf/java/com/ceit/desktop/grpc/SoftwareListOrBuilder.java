@@ -32,14 +32,26 @@ public interface SoftwareListOrBuilder extends
       getHashBytes();
 
   /**
-   * <code>string time = 3;</code>
-   * @return The time.
+   * <code>string install_time = 3;</code>
+   * @return The installTime.
    */
-  java.lang.String getTime();
+  java.lang.String getInstallTime();
   /**
-   * <code>string time = 3;</code>
-   * @return The bytes for time.
+   * <code>string install_time = 3;</code>
+   * @return The bytes for installTime.
    */
   com.google.protobuf.ByteString
-      getTimeBytes();
+      getInstallTimeBytes();
+
+  /**
+   * <code>string modify_time = 4;</code>
+   * @return The modifyTime.
+   */
+  java.lang.String getModifyTime();
+  /**
+   * <code>string modify_time = 4;</code>
+   * @return The bytes for modifyTime.
+   */
+  com.google.protobuf.ByteString
+      getModifyTimeBytes();
 }

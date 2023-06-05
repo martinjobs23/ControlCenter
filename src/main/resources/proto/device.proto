@@ -7,6 +7,8 @@ option objc_class_prefix = "HLW";
 
 package device;
 
+//用于与客户端通信时序列化和反序列化
+
 service Device {
   rpc HardwareCheck (HardwareCheckRequest) returns (HardwareCheckReply) {}
 }

@@ -5,7 +5,9 @@ import com.ceit.desktop.netty.PluginManager;
 import com.ceit.desktop.utils.AgentStatusUtil;
 import io.netty.channel.ChannelHandlerContext;
 
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 public class AgentSessionManager {
 
@@ -20,6 +22,10 @@ public class AgentSessionManager {
         _pluginManager = pluginManager;
     }
 
+    public void initAllAgentSessionOnline(){
+        agentStatusUtil.updateDeviceStatusAll();
+    }
+
     public AgentSession getAgentSessionByAgentId(String agentId) {
         if (agentSessionTable.containsKey(agentId))
         {
@@ -32,6 +38,11 @@ public class AgentSessionManager {
         if (!agentSessionTable.containsKey(agentId))
         {
             agentSessionTable.put(agentId,agentSession);
+        }else{
+            AgentSession ctx = (AgentSession)agentSessionTable.get(agentId);
+            ctx.getContext().close();
+            //System.out.println("11111111111111111111111111111111111111111111111111111111111111111111");
+            agentSessionTable.replace(agentId,agentSession);
         }
     }
 
@@ -40,8 +51,10 @@ public class AgentSessionManager {
         AgentSession agent = (AgentSession)agentSessionTable.get(agentId);
         if (agent != null)
         {
+            //System.out.println("========================================");
             //断开连接，删除会话
             agentSessionTable.remove(agentId);
+            //agent.Context.disconnect();
             agent.Context.close();
             agentStatusUtil.updateDeviceStatusById(agentId,0);
         }

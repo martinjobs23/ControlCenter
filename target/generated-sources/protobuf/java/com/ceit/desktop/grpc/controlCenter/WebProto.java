@@ -64,6 +64,51 @@ public final class WebProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_web_UploadRespond_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_CheckVersionRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_CheckVersionRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_CheckVersionResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_CheckVersionResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_UpdatePasswordRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_UpdatePasswordRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_UpdatePasswordResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_UpdatePasswordResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_WorkOrderRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_WorkOrderRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_WorkOrderReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_WorkOrderReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_pushSoftwareDetail_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_pushSoftwareDetail_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_pushDev_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_pushDev_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_web_pushSoftwareReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_web_pushSoftwareReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -89,18 +134,43 @@ public final class WebProto {
       "\022\014\n\004desc\030\002 \001(\t\022\014\n\004size\030\003 \001(\t\022\013\n\003url\030\004 \001(" +
       "\t\022\014\n\004hash\030\005 \001(\t\022\013\n\003org\030\006 \001(\t\"\035\n\rUploadRe" +
       "quest\022\014\n\004hash\030\001 \001(\t\"8\n\rUploadRespond\022\014\n\004" +
-      "code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\022\014\n\004data\030\003 \001(\t2\350\002" +
-      "\n\003Web\022D\n\020DevRegisterCheck\022\027.web.DevRegis" +
-      "terRequest\032\025.web.DevRegisterReply\"\000\022E\n\rD" +
-      "evUnRegister\022\031.web.DevUnRegisterRequest\032" +
-      "\027.web.DevUnRegisterReply\"\000\022J\n\020fileDetail" +
-      "ByType\022\034.web.FileDetailRequestByType\032\026.w" +
-      "eb.FileDetailRespone\"\000\022J\n\020fileDetailByNa" +
-      "me\022\034.web.FileDetailRequestByName\032\026.web.F" +
-      "ileDetailRespone\"\000\022<\n\020softwareRegister\022\022" +
-      ".web.UploadRequest\032\022.web.UploadRespond\"\000" +
-      "B7\n#com.ceit.desktop.grpc.controlCenterB" +
-      "\010WebProtoP\001\242\002\003HLWb\006proto3"
+      "code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\022\014\n\004data\030\003 \001(\t\"3\n" +
+      "\023CheckVersionRequest\022\r\n\005major\030\001 \001(\005\022\r\n\005m" +
+      "inor\030\002 \001(\005\"_\n\024CheckVersionResponse\022\016\n\006re" +
+      "sult\030\001 \001(\005\022\r\n\005major\030\002 \001(\005\022\r\n\005minor\030\003 \001(\005" +
+      "\022\014\n\004name\030\004 \001(\t\022\013\n\003url\030\005 \001(\t\">\n\025UpdatePas" +
+      "swordRequest\022\020\n\010username\030\001 \001(\t\022\023\n\013newPas" +
+      "sword\030\002 \001(\t\"8\n\026UpdatePasswordResponse\022\016\n" +
+      "\006result\030\001 \001(\005\022\016\n\006status\030\002 \001(\t\"\206\001\n\020WorkOr" +
+      "derRequest\022\031\n\021username_or_admin\030\001 \001(\t\022\014\n" +
+      "\004type\030\002 \001(\005\022\031\n\021content_or_result\030\003 \001(\t\022\036" +
+      "\n\026submit_or_process_time\030\004 \001(\t\022\016\n\006serial" +
+      "\030\005 \001(\t\"0\n\016WorkOrderReply\022\016\n\006status\030\001 \001(\005" +
+      "\022\016\n\006result\030\002 \001(\t\"v\n\022pushSoftwareDetail\022\017" +
+      "\n\007sw_name\030\001 \001(\t\022\016\n\006sw_url\030\002 \001(\t\022\022\n\nsw_ve" +
+      "rsion\030\003 \001(\t\022\035\n\007devlist\030\004 \003(\0132\014.web.pushD" +
+      "ev\022\014\n\004time\030\005 \001(\t\"\031\n\007pushDev\022\016\n\006dev_ip\030\001 " +
+      "\001(\t\"3\n\021pushSoftwareReply\022\016\n\006status\030\001 \001(\005" +
+      "\022\016\n\006result\030\002 \001(\t2\302\005\n\003Web\022D\n\020DevRegisterC" +
+      "heck\022\027.web.DevRegisterRequest\032\025.web.DevR" +
+      "egisterReply\"\000\022E\n\rDevUnRegister\022\031.web.De" +
+      "vUnRegisterRequest\032\027.web.DevUnRegisterRe" +
+      "ply\"\000\022J\n\020fileDetailByType\022\034.web.FileDeta" +
+      "ilRequestByType\032\026.web.FileDetailRespone\"" +
+      "\000\022J\n\020fileDetailByName\022\034.web.FileDetailRe" +
+      "questByName\032\026.web.FileDetailRespone\"\000\022<\n" +
+      "\020softwareRegister\022\022.web.UploadRequest\032\022." +
+      "web.UploadRespond\"\000\022E\n\014checkVersion\022\030.we" +
+      "b.CheckVersionRequest\032\031.web.CheckVersion" +
+      "Response\"\000\022K\n\016updatePassword\022\032.web.Updat" +
+      "ePasswordRequest\032\033.web.UpdatePasswordRes" +
+      "ponse\"\000\022?\n\017submitWorkOrder\022\025.web.WorkOrd" +
+      "erRequest\032\023.web.WorkOrderReply\"\000\022@\n\020proc" +
+      "essWorkOrder\022\025.web.WorkOrderRequest\032\023.we" +
+      "b.WorkOrderReply\"\000\022A\n\014pushSoftware\022\027.web" +
+      ".pushSoftwareDetail\032\026.web.pushSoftwareRe" +
+      "ply\"\000B7\n#com.ceit.desktop.grpc.controlCe" +
+      "nterB\010WebProtoP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -166,6 +236,60 @@ public final class WebProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_web_UploadRespond_descriptor,
         new java.lang.String[] { "Code", "Msg", "Data", });
+    internal_static_web_CheckVersionRequest_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_web_CheckVersionRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_CheckVersionRequest_descriptor,
+        new java.lang.String[] { "Major", "Minor", });
+    internal_static_web_CheckVersionResponse_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_web_CheckVersionResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_CheckVersionResponse_descriptor,
+        new java.lang.String[] { "Result", "Major", "Minor", "Name", "Url", });
+    internal_static_web_UpdatePasswordRequest_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_web_UpdatePasswordRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_UpdatePasswordRequest_descriptor,
+        new java.lang.String[] { "Username", "NewPassword", });
+    internal_static_web_UpdatePasswordResponse_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_web_UpdatePasswordResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_UpdatePasswordResponse_descriptor,
+        new java.lang.String[] { "Result", "Status", });
+    internal_static_web_WorkOrderRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_web_WorkOrderRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_WorkOrderRequest_descriptor,
+        new java.lang.String[] { "UsernameOrAdmin", "Type", "ContentOrResult", "SubmitOrProcessTime", "Serial", });
+    internal_static_web_WorkOrderReply_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_web_WorkOrderReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_WorkOrderReply_descriptor,
+        new java.lang.String[] { "Status", "Result", });
+    internal_static_web_pushSoftwareDetail_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_web_pushSoftwareDetail_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_pushSoftwareDetail_descriptor,
+        new java.lang.String[] { "SwName", "SwUrl", "SwVersion", "Devlist", "Time", });
+    internal_static_web_pushDev_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_web_pushDev_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_pushDev_descriptor,
+        new java.lang.String[] { "DevIp", });
+    internal_static_web_pushSoftwareReply_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_web_pushSoftwareReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_web_pushSoftwareReply_descriptor,
+        new java.lang.String[] { "Status", "Result", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

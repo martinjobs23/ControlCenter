@@ -18,7 +18,8 @@ private static final long serialVersionUID = 0L;
   private SoftwareList() {
     filename_ = "";
     hash_ = "";
-    time_ = "";
+    installTime_ = "";
+    modifyTime_ = "";
   }
 
   @java.lang.Override
@@ -66,7 +67,13 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            time_ = s;
+            installTime_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            modifyTime_ = s;
             break;
           }
           default: {
@@ -177,38 +184,76 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TIME_FIELD_NUMBER = 3;
-  private volatile java.lang.Object time_;
+  public static final int INSTALL_TIME_FIELD_NUMBER = 3;
+  private volatile java.lang.Object installTime_;
   /**
-   * <code>string time = 3;</code>
-   * @return The time.
+   * <code>string install_time = 3;</code>
+   * @return The installTime.
    */
   @java.lang.Override
-  public java.lang.String getTime() {
-    java.lang.Object ref = time_;
+  public java.lang.String getInstallTime() {
+    java.lang.Object ref = installTime_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      time_ = s;
+      installTime_ = s;
       return s;
     }
   }
   /**
-   * <code>string time = 3;</code>
-   * @return The bytes for time.
+   * <code>string install_time = 3;</code>
+   * @return The bytes for installTime.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getTimeBytes() {
-    java.lang.Object ref = time_;
+      getInstallTimeBytes() {
+    java.lang.Object ref = installTime_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      time_ = b;
+      installTime_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MODIFY_TIME_FIELD_NUMBER = 4;
+  private volatile java.lang.Object modifyTime_;
+  /**
+   * <code>string modify_time = 4;</code>
+   * @return The modifyTime.
+   */
+  @java.lang.Override
+  public java.lang.String getModifyTime() {
+    java.lang.Object ref = modifyTime_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      modifyTime_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string modify_time = 4;</code>
+   * @return The bytes for modifyTime.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getModifyTimeBytes() {
+    java.lang.Object ref = modifyTime_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      modifyTime_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -235,8 +280,11 @@ private static final long serialVersionUID = 0L;
     if (!getHashBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, hash_);
     }
-    if (!getTimeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, time_);
+    if (!getInstallTimeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, installTime_);
+    }
+    if (!getModifyTimeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, modifyTime_);
     }
     unknownFields.writeTo(output);
   }
@@ -253,8 +301,11 @@ private static final long serialVersionUID = 0L;
     if (!getHashBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, hash_);
     }
-    if (!getTimeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, time_);
+    if (!getInstallTimeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, installTime_);
+    }
+    if (!getModifyTimeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, modifyTime_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -275,8 +326,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFilename())) return false;
     if (!getHash()
         .equals(other.getHash())) return false;
-    if (!getTime()
-        .equals(other.getTime())) return false;
+    if (!getInstallTime()
+        .equals(other.getInstallTime())) return false;
+    if (!getModifyTime()
+        .equals(other.getModifyTime())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -292,8 +345,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getFilename().hashCode();
     hash = (37 * hash) + HASH_FIELD_NUMBER;
     hash = (53 * hash) + getHash().hashCode();
-    hash = (37 * hash) + TIME_FIELD_NUMBER;
-    hash = (53 * hash) + getTime().hashCode();
+    hash = (37 * hash) + INSTALL_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getInstallTime().hashCode();
+    hash = (37 * hash) + MODIFY_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getModifyTime().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -431,7 +486,9 @@ private static final long serialVersionUID = 0L;
 
       hash_ = "";
 
-      time_ = "";
+      installTime_ = "";
+
+      modifyTime_ = "";
 
       return this;
     }
@@ -461,7 +518,8 @@ private static final long serialVersionUID = 0L;
       com.ceit.desktop.grpc.SoftwareList result = new com.ceit.desktop.grpc.SoftwareList(this);
       result.filename_ = filename_;
       result.hash_ = hash_;
-      result.time_ = time_;
+      result.installTime_ = installTime_;
+      result.modifyTime_ = modifyTime_;
       onBuilt();
       return result;
     }
@@ -518,8 +576,12 @@ private static final long serialVersionUID = 0L;
         hash_ = other.hash_;
         onChanged();
       }
-      if (!other.getTime().isEmpty()) {
-        time_ = other.time_;
+      if (!other.getInstallTime().isEmpty()) {
+        installTime_ = other.installTime_;
+        onChanged();
+      }
+      if (!other.getModifyTime().isEmpty()) {
+        modifyTime_ = other.modifyTime_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -703,78 +765,154 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object time_ = "";
+    private java.lang.Object installTime_ = "";
     /**
-     * <code>string time = 3;</code>
-     * @return The time.
+     * <code>string install_time = 3;</code>
+     * @return The installTime.
      */
-    public java.lang.String getTime() {
-      java.lang.Object ref = time_;
+    public java.lang.String getInstallTime() {
+      java.lang.Object ref = installTime_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        time_ = s;
+        installTime_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string time = 3;</code>
-     * @return The bytes for time.
+     * <code>string install_time = 3;</code>
+     * @return The bytes for installTime.
      */
     public com.google.protobuf.ByteString
-        getTimeBytes() {
-      java.lang.Object ref = time_;
+        getInstallTimeBytes() {
+      java.lang.Object ref = installTime_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        time_ = b;
+        installTime_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string time = 3;</code>
-     * @param value The time to set.
+     * <code>string install_time = 3;</code>
+     * @param value The installTime to set.
      * @return This builder for chaining.
      */
-    public Builder setTime(
+    public Builder setInstallTime(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      time_ = value;
+      installTime_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string time = 3;</code>
+     * <code>string install_time = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearTime() {
+    public Builder clearInstallTime() {
       
-      time_ = getDefaultInstance().getTime();
+      installTime_ = getDefaultInstance().getInstallTime();
       onChanged();
       return this;
     }
     /**
-     * <code>string time = 3;</code>
-     * @param value The bytes for time to set.
+     * <code>string install_time = 3;</code>
+     * @param value The bytes for installTime to set.
      * @return This builder for chaining.
      */
-    public Builder setTimeBytes(
+    public Builder setInstallTimeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      time_ = value;
+      installTime_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object modifyTime_ = "";
+    /**
+     * <code>string modify_time = 4;</code>
+     * @return The modifyTime.
+     */
+    public java.lang.String getModifyTime() {
+      java.lang.Object ref = modifyTime_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        modifyTime_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string modify_time = 4;</code>
+     * @return The bytes for modifyTime.
+     */
+    public com.google.protobuf.ByteString
+        getModifyTimeBytes() {
+      java.lang.Object ref = modifyTime_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        modifyTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string modify_time = 4;</code>
+     * @param value The modifyTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setModifyTime(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      modifyTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string modify_time = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearModifyTime() {
+      
+      modifyTime_ = getDefaultInstance().getModifyTime();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string modify_time = 4;</code>
+     * @param value The bytes for modifyTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setModifyTimeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      modifyTime_ = value;
       onChanged();
       return this;
     }

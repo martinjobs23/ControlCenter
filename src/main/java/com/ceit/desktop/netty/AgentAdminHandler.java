@@ -47,37 +47,60 @@ public class AgentAdminHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception { //客户端与服务端第一次建立连接时执行
-
+        int localPort = ((InetSocketAddress) ctx.channel().localAddress()).getPort();
+        if(localPort != 50059)
+            return;
         InetSocketAddress insocket = (InetSocketAddress) ctx.channel().remoteAddress();
         String clientIp = insocket.getAddress().getHostAddress();
         logger.info("deivce {} channelActive",clientIp);
-
-
+        //System.out.println("????????????????????????????????????????????????????????????????????????????????????????????");
+        //System.out.println(ctx);
         String agentId = agentStatusUtil.selectDevIdByIp(clientIp);
+        if(agentId.length() == 1){
+            ctx.close();
+            logger.info("device {} is unregistered,the connection has shut down", clientIp);
+            return;
+        }
         //根据agentId 查找 终端会话
         AgentSession agent = _agentSessionManager.getAgentSessionByAgentId(agentId);
         if (agent == null){
+            //System.out.println("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
             AgentSession agentSession = new AgentSession(agentId,ctx);
             _agentSessionManager.ChangeAgentSession(agentId,agentSession);
             agentStatusUtil.updateDeviceStatusById(agentId,1);
         } else {
-            if (agent.Context != ctx){
+            if (agent.Context.toString() != ctx.toString()){
+                //System.out.println("========================================================================================");
+                //agent.Context.disconnect();
+                //System.out.println(agent.Context);
+                //System.out.println(ctx);
                 agent.Context.close();
                 AgentSession agentSession = new AgentSession(agentId,ctx);
                 _agentSessionManager.ChangeAgentSession(agentId,agentSession);
                 agentStatusUtil.updateDeviceStatusById(agentId,1);
             }
+            //System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            //System.out.println(agent.Context);
         }
         super.channelActive(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        int localPort = ((InetSocketAddress) ctx.channel().localAddress()).getPort();
+        if(localPort != 50059)
+            return;
+
         InetSocketAddress insocket = (InetSocketAddress) ctx.channel().remoteAddress();
         String clientIp = insocket.getAddress().getHostAddress();
 //        ctx.close();
         logger.info("deivce {} channelInactive",clientIp);
         String agentId = agentStatusUtil.selectDevIdByIp(clientIp);
+        if(agentId.length() == 1){
+            ctx.close();
+            logger.info("device {} is unregistered", clientIp);
+            return;
+        }
         _agentSessionManager.onCloseConnection(agentId);
         super.channelInactive(ctx);
 //        ctx.fireChannelInactive();
@@ -144,11 +167,15 @@ public class AgentAdminHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception { //出现异常时调用
-
         InetSocketAddress insocket = (InetSocketAddress) ctx.channel().remoteAddress();
         String clientIp = insocket.getAddress().getHostAddress();
         logger.info("device {} exceptionCaught",clientIp);
         cause.printStackTrace();
+        int localPort = ((InetSocketAddress) ctx.channel().localAddress()).getPort();
+        if(localPort != 50059){
+            ctx.close();//抛出异常，断开与客户端的连接
+            return;
+        }
         String agentId = agentStatusUtil.selectDevIdByIp(clientIp);
         _agentSessionManager.onCloseConnection(agentId);
         ctx.close();//抛出异常，断开与客户端的连接

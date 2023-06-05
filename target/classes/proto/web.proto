@@ -13,6 +13,11 @@ service Web {
   rpc fileDetailByType (FileDetailRequestByType) returns (FileDetailRespone) {}
   rpc fileDetailByName (FileDetailRequestByName) returns (FileDetailRespone) {}
   rpc softwareRegister (UploadRequest) returns (UploadRespond) {}
+  rpc checkVersion (CheckVersionRequest) returns (CheckVersionResponse){}
+  rpc updatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse){}
+  rpc submitWorkOrder (WorkOrderRequest) returns (WorkOrderReply) {}
+  rpc processWorkOrder (WorkOrderRequest) returns (WorkOrderReply) {}
+  rpc pushSoftware (pushSoftwareDetail) returns (pushSoftwareReply) {}
 }
 
 message DevRegisterRequest {
@@ -52,7 +57,6 @@ message FileDetailRespone{
   repeated  OneFileDetail detaillist = 1;
   int32 count = 2;
 }
-
 message OneFileDetail{
   string filename = 1;
   string image = 7;
@@ -74,4 +78,55 @@ message UploadRespond{
   string data = 3;
 }
 
+message CheckVersionRequest{
+  int32 major = 1; //当前客户端存储的软件大版本，简单使用int表示  例如1.12  大版本为1 小版本为12
+  int32 minor = 2;//当前客户端存储的软件小版本，简单使用int表示
+}
 
+message CheckVersionResponse{
+  int32 result = 1; //服务端返回版本对比情况  0：无更新 1：有更新
+  int32 major = 2; //当前数据库最新软件的大版本
+  int32 minor = 3;//当前数据库最新软件的小版本
+  string name =4;//软件名称，方便客户端显示
+  string url =5;//直接返回软件的下载链接 http://192.168.106.126/Downloads/ceit_aqjr.exe
+}
+
+message UpdatePasswordRequest{
+  string username = 1;  //当前修改密码的用户名
+  string newPassword = 2;//客户端审核通过（两次密码一致且满足密码格式要求）的密码密文（sm4加密）
+}
+
+message UpdatePasswordResponse{
+  int32 result = 1; //密码更新结果 0：失败 1：成功
+  string status = 2;//密码更新失败的原因：用户不存在？与之前密码相同？等等
+}
+
+message WorkOrderRequest{
+  string username_or_admin = 1;
+  int32 type = 2;
+  string content_or_result = 3;
+  string submit_or_process_time = 4;
+  string serial = 5;
+}
+
+message WorkOrderReply{
+  int32 status = 1;
+  string result = 2;
+}
+
+message pushSoftwareDetail {
+  string sw_name = 1;
+  string sw_url = 2;
+  string sw_version = 3;
+  repeated pushDev devlist = 4;     //推送的目标设备列表
+  string time = 5;
+}
+
+message pushDev {
+  string dev_ip = 1;
+}
+
+message pushSoftwareReply {
+  int32 status = 1;
+  string result = 2;
+}

@@ -13,7 +13,7 @@ public class SoftMarketUpload {
     private JdbcUtil jdbcUtil = new JdbcUtil();
     // 这个地方需要开始和CA中心进行沟通，申请证书
     public Result softwareRegister(String md5Hash){    //按类型查找
-        System.out.println(md5Hash);
+        System.out.println("本次上传软件的hash值为"+md5Hash+"。");
         if (md5Hash == ""||md5Hash == null ){
             return new Result("error",000,"Hash值为空，上传失败。");
         }

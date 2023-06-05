@@ -12,7 +12,7 @@ public class AgentStatusUtil {
     {
         int count = 0;
         //
-        String sql1 = "select count(*) from device_cert where dev_id= ?";
+        String sql1 = "select count(*) from dev_cert where dev_hash= ?";
         List<Map<String, Object>> flag = jdbcUtil.executeQuery(sql1,agentId);
         if (flag.size()!=0)
         {
@@ -22,12 +22,12 @@ public class AgentStatusUtil {
     }
 
     public String selectDevIdByIp(String ip){
-        String dev_id = "0000";
-        String sql = "select dev_id from device_cert where device_ip = ?";
+        String dev_id = "x";
+        String sql = "select dev_hash from dev_cert where dev_ip = ?";
         List<Map<String, Object>> list = jdbcUtil.executeQuery(sql,ip);
         if (list.size()!=0) {
             for (Map map:list){
-                dev_id = (String) map.get("dev_id");
+                dev_id = (String) map.get("dev_hash");
             }
         }
         return dev_id;
@@ -36,8 +36,15 @@ public class AgentStatusUtil {
     public int updateDeviceStatusById(String agentId,int onlineStatus)
     {
         int count = 0;
-        String sql = "update device_cert set online=? where dev_id=?";
+        String sql = "update dev_cert set online=? where dev_hash=?";
         count = jdbcUtil.executeUpdate(sql,onlineStatus,agentId);
+        return count;
+    }
+
+    public int updateDeviceStatusAll(){
+        int count = 0;
+        String sql = "update dev_cert set online=?";
+        count = jdbcUtil.executeUpdate(sql,0);
         return count;
     }
 }

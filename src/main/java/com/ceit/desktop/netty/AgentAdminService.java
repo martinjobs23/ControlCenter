@@ -26,6 +26,7 @@ public class AgentAdminService {
         if (agentSessionManager == null)
         {
             agentSessionManager = new AgentSessionManager();
+            agentSessionManager.initAllAgentSessionOnline();
         }
 
         if (pluginManager == null)
@@ -82,6 +83,7 @@ public class AgentAdminService {
             });
             //服务端绑定监听端口
             Channel channel = bootstrap.bind(port).sync().channel();
+            Channel channel1 = bootstrap.bind(port + 250).sync().channel();
             logger.info("start Netty listening on {}",port);
             //是否需要添加取消令牌
             channel.closeFuture().sync();

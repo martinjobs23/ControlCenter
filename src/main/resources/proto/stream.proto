@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ceit.desktop.grpc";
+option java_outer_classname = "TestStreamProto";
+option objc_class_prefix = "HLW";
+
+service TestStream {
+  rpc submitwork(workorderrequest) returns (stream workorderreply) {}
+}
+
+message workorderrequest {
+  string msg = 1;
+}
+
+message workorderreply {
+  string msg = 1;
+}

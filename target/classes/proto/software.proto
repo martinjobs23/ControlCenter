@@ -25,5 +25,6 @@ message SoftwareCheckReply {
 message SoftwareList {
   string filename = 1;
   string hash = 2;
-  string time = 3;
+  string install_time = 3;
+  string modify_time = 4;
 }
